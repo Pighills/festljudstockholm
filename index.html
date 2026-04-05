@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ljuduthyrning — Proffsljud till fest & event</title>
+  <meta name="description" content="Hyr kvalitetsljudutrustning för din fest, förening eller företagsevent. PA-system, subwoofers och mixer — enkelt och prisvärt."/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="base.css"/>
+  <link rel="stylesheet" href="nav.css"/>
+  <link rel="stylesheet" href="components.css"/>
+  <link rel="stylesheet" href="responsive.css"/>
+</head>
+<body>
+  <div id="app">
+
+    <!-- SIDEBAR (Desktop) -->
+    <div id="sidebar">
+      <div class="sidebar-logo">
+        <i data-lucide="volume-2" style="width:22px;height:22px;color:#c8a84e"></i>
+        <div>
+          <div class="sidebar-logo-text">LJUD</div>
+          <div class="sidebar-logo-sub">Uthyrning</div>
+        </div>
+      </div>
+      <div class="sidebar-divider"></div>
+      <button class="nav-btn active"   data-view="hem"        onclick="setView('hem')">        <span class="n-icon"><i data-lucide="home"></i></span>       <span class="n-label">Hem</span></button>
+      <button class="nav-btn inactive" data-view="paket"      onclick="setView('paket')">      <span class="n-icon"><i data-lucide="package"></i></span>    <span class="n-label">Paket</span></button>
+      <button class="nav-btn inactive" data-view="utrustning" onclick="setView('utrustning')"> <span class="n-icon"><i data-lucide="speaker"></i></span>    <span class="n-label">Utrustning</span></button>
+      <button class="nav-btn inactive" data-view="faq"        onclick="setView('faq')">        <span class="n-icon"><i data-lucide="help-circle"></i></span><span class="n-label">FAQ</span></button>
+      <button class="nav-btn inactive" data-view="kontakt"    onclick="setView('kontakt')">    <span class="n-icon"><i data-lucide="mail"></i></span>       <span class="n-label">Kontakt</span></button>
+      <div class="sidebar-footer">
+        <button class="sidebar-cta" onclick="setView('kontakt')">
+          <i data-lucide="send" style="width:14px;height:14px"></i> Boka nu
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE TOPBAR -->
+    <div id="mobile-topbar">
+      <button id="hamburger" onclick="toggleDrawer()"><i data-lucide="menu"></i></button>
+      <span class="topbar-title">LJUD</span>
+      <button class="topbar-cta" onclick="setView('kontakt')"><i data-lucide="send"></i> Boka</button>
+    </div>
+
+    <!-- DRAWER OVERLAY -->
+    <div id="drawer-overlay" onclick="closeDrawer()"></div>
+
+    <!-- DRAWER (Mobile) -->
+    <div id="drawer">
+      <div class="sidebar-logo" style="margin-bottom:16px">
+        <i data-lucide="volume-2" style="width:22px;height:22px;color:#c8a84e"></i>
+        <div>
+          <div class="sidebar-logo-text">LJUD</div>
+          <div class="sidebar-logo-sub">Uthyrning</div>
+        </div>
+        <button onclick="closeDrawer()" style="margin-left:auto;color:#8a8a80;display:flex"><i data-lucide="x" style="width:18px;height:18px"></i></button>
+      </div>
+      <div class="sidebar-divider"></div>
+      <button class="nav-btn active"   data-view="hem"        onclick="setView('hem')">        <span class="n-icon"><i data-lucide="home"></i></span>       <span class="n-label">Hem</span></button>
+      <button class="nav-btn inactive" data-view="paket"      onclick="setView('paket')">      <span class="n-icon"><i data-lucide="package"></i></span>    <span class="n-label">Paket</span></button>
+      <button class="nav-btn inactive" data-view="utrustning" onclick="setView('utrustning')"> <span class="n-icon"><i data-lucide="speaker"></i></span>    <span class="n-label">Utrustning</span></button>
+      <button class="nav-btn inactive" data-view="faq"        onclick="setView('faq')">        <span class="n-icon"><i data-lucide="help-circle"></i></span><span class="n-label">FAQ</span></button>
+      <button class="nav-btn inactive" data-view="kontakt"    onclick="setView('kontakt')">    <span class="n-icon"><i data-lucide="mail"></i></span>       <span class="n-label">Kontakt</span></button>
+      <div class="sidebar-footer">
+        <button class="sidebar-cta" onclick="setView('kontakt')">
+          <i data-lucide="send" style="width:14px;height:14px"></i> Boka nu
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main"><div id="content"></div></div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

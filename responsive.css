@@ -1,0 +1,87 @@
+/* ══════════════════════════════════════
+   responsive.css — Mobilanpassning
+   ══════════════════════════════════════ */
+
+@media(max-width:768px){
+  /* Layout */
+  #sidebar{display:none;}
+  #drawer{display:flex;}
+  #mobile-topbar{display:flex;}
+  #main{margin-left:0;padding-top:56px;}
+  #content{padding:0 16px;}
+
+  /* Sektioner */
+  .section{padding:40px 0;}
+  .section-label{font-size:9px;padding:4px 12px;margin-bottom:12px;}
+  .section-title{font-size:22px;letter-spacing:-.3px;}
+  .section-subtitle{font-size:13px;}
+
+  /* Hero */
+  .hero{padding:32px 0 48px;}
+  .hero-badge{font-size:10px;padding:5px 12px;margin-bottom:20px;}
+  .hero-title{font-size:28px;letter-spacing:-.5px;}
+  .hero-desc{font-size:13px;margin-bottom:24px;padding:0 4px;}
+  .hero-actions{flex-direction:column;width:100%;gap:10px;}
+  .btn-gold,.btn-outline{
+    width:100%;
+    justify-content:center;
+    padding:14px 24px;
+    font-size:14px;
+  }
+
+  /* Paket */
+  .packages-grid{grid-template-columns:1fr;gap:12px;}
+  .package-card{padding:20px 16px;}
+  .package-name{font-size:16px;}
+  .package-price{font-size:20px;}
+  .package-features li{font-size:12px;}
+
+  /* Tillägg */
+  .addons-row{grid-template-columns:repeat(3,1fr);gap:8px;}
+  .addon-card{padding:12px 8px;}
+  .addon-icon{width:32px;height:32px;margin-bottom:6px;}
+  .addon-name{font-size:11px;}
+  .addon-price{font-size:10px;}
+
+  /* Steg */
+  .steps-grid{grid-template-columns:1fr;gap:10px;}
+  .step-card{padding:16px 14px;}
+  .step-title{font-size:13px;}
+  .step-desc{font-size:12px;}
+
+  /* Utrustning */
+  .equipment-grid{grid-template-columns:1fr;gap:10px;}
+  .equip-card{padding:14px 12px;gap:12px;}
+  .equip-icon{width:36px;height:36px;}
+  .equip-name{font-size:13px;}
+  .equip-spec{font-size:11px;}
+
+  /* FAQ */
+  .faq-item{margin-bottom:6px;}
+  .faq-q{padding:14px 14px;gap:10px;}
+  .faq-q-icon{width:26px;height:26px;}
+  .faq-q-text{font-size:13px;}
+  .faq-item.open .faq-a{padding:0 14px 14px 48px;}
+  .faq-a p{font-size:12px;}
+
+  /* Kontakt */
+  .contact-grid{grid-template-columns:1fr;gap:10px;}
+  .contact-card{padding:16px 14px;gap:12px;}
+  .contact-icon{width:40px;height:40px;}
+  .contact-value{font-size:13px;}
+
+  /* Footer */
+  .footer{padding:24px 0;}
+}
+
+/* Mindre telefoner */
+@media(max-width:380px){
+  #content{padding:0 12px;}
+  .hero-title{font-size:24px;}
+  .hero-desc{font-size:12px;}
+  .package-card{padding:16px 14px;}
+  .addons-row{grid-template-columns:1fr 1fr 1fr;gap:6px;}
+  .addon-card{padding:10px 6px;}
+  .addon-name{font-size:10px;}
+  .addon-price{font-size:9px;}
+}

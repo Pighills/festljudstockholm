@@ -188,20 +188,20 @@ function renderHomePackages() {
               <div class="package-name">${p.name}</div>
               <div class="package-desc">${p.desc}</div>
               <div style="display:flex;align-items:baseline;gap:6px;margin-top:auto;padding-top:12px">
-                <span class="package-price" style="font-size:18px">${p.price} kr</span>
+                <span class="package-price" style="font-size:20px">${p.price} kr</span>
                 <span class="package-price-note" style="margin-bottom:0">/ dygn</span>
               </div>
-              <div style="font-size:11px;color:#8a8a80;margin-top:10px;display:flex;align-items:center;gap:4px">${icon('rotate-cw', 12)} Tryck för mer info</div>
+              <div style="font-size:13px;color:#8a8a80;margin-top:10px;display:flex;align-items:center;gap:4px">${icon('rotate-cw', 12)} Tryck för mer info</div>
             ` : `
               <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
                 <div class="package-tag ${p.tagStyle}" style="margin-bottom:0">${p.name}</div>
               </div>
-              <div style="font-size:12px;font-weight:700;color:#f5f5f0;margin-bottom:6px">Passar till</div>
-              <div style="font-size:12px;color:#b5b5aa;line-height:1.7;margin-bottom:14px">${p.suited}</div>
+              <div style="font-size:14px;font-weight:700;color:#f5f5f0;margin-bottom:6px">Passar till</div>
+              <div style="font-size:14px;color:#b5b5aa;line-height:1.7;margin-bottom:14px">${p.suited}</div>
               <button class="package-btn primary" onclick="event.stopPropagation();booking.packageIdx=${idx};booking.step=2;setView('boka')">
                 ${icon('calendar-check', 14)} Boka detta paket
               </button>
-              <div style="font-size:11px;color:#8a8a80;margin-top:8px;display:flex;align-items:center;gap:4px;justify-content:center">${icon('rotate-cw', 12)} Tryck för att vända tillbaka</div>
+              <div style="font-size:13px;color:#8a8a80;margin-top:8px;display:flex;align-items:center;gap:4px;justify-content:center">${icon('rotate-cw', 12)} Tryck för att vända tillbaka</div>
             `}
           </div>`;
         }).join('')}
@@ -209,8 +209,8 @@ function renderHomePackages() {
 
       <div style="margin-top:28px">
         <div style="font-size:13px;font-weight:700;color:#f5f5f0;margin-bottom:6px">Tillägg</div>
-        <div style="font-size:12px;color:#8a8a80;line-height:1.6;margin-bottom:14px">Alla paket kan kompletteras med tillägg efter behov. Har du övriga önskemål anger du det enkelt i samband med din <button onclick="setView('boka')" style="color:#c8a84e;font-weight:600;cursor:pointer;font-size:12px;font-family:inherit;text-decoration:underline">bokning</button>.</div>
-        <div style="font-size:11px;color:#8a8a80;margin-bottom:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">Exempel på tillägg</div>
+        <div style="font-size:14px;color:#8a8a80;line-height:1.6;margin-bottom:14px">Alla paket kan kompletteras med tillägg efter behov. Har du övriga önskemål anger du det enkelt i samband med din <button onclick="setView('boka')" style="color:#c8a84e;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit;text-decoration:underline">bokning</button>.</div>
+        <div style="font-size:12px;color:#8a8a80;margin-bottom:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">Exempel på tillägg</div>
         <div class="addons-row">
           ${ADDONS.map(a => `
             <div class="addon-info">
@@ -257,7 +257,7 @@ function renderPackages() {
       </div>
 
       <div style="margin-top:28px">
-        <div style="font-size:13px;font-weight:700;color:#f5f5f0;margin-bottom:12px">Tillägg</div>
+        <div style="font-size:15px;font-weight:700;color:#f5f5f0;margin-bottom:12px">Tillägg</div>
         <div class="addons-row">
           ${ADDONS.map(a => `
             <div class="addon-info">
@@ -371,7 +371,7 @@ function renderContact() {
           </div>
           <div>
             <div style="font-size:13px;font-weight:700;color:#f5f5f0;margin-bottom:4px">Svarstider</div>
-            <div style="font-size:12px;color:#8a8a80;line-height:1.7">
+            <div style="font-size:14px;color:#8a8a80;line-height:1.7">
               Vardagar: samma dag<br>
               Helger: vanligtvis inom ett par timmar<br>
               Bokningsbekräftelse inom 24h

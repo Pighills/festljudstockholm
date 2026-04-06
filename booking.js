@@ -96,7 +96,7 @@ function renderBookingStep1() {
           <div class="package-name">${p.name}</div>
           <div class="package-desc">${p.desc}</div>
           <div style="display:flex;align-items:baseline;gap:6px;margin-top:8px">
-            <span class="package-price" style="font-size:18px">${p.price} kr</span>
+            <span class="package-price" style="font-size:20px">${p.price} kr</span>
             <span class="package-price-note" style="margin-bottom:0">/ dygn</span>
           </div>
         </div>
@@ -189,8 +189,8 @@ function renderBookingStep2() {
       <div class="booking-date-confirm">
         ${icon('calendar-check', 18)}
         <div>
-          <div style="font-size:11px;color:#8a8a80;font-weight:600">Valt datum</div>
-          <div style="font-size:14px;font-weight:700;color:#f5f5f0;text-transform:capitalize">${formatDateSwedish(booking.date)}</div>
+          <div style="font-size:13px;color:#8a8a80;font-weight:600">Valt datum</div>
+          <div style="font-size:16px;font-weight:700;color:#f5f5f0;text-transform:capitalize">${formatDateSwedish(booking.date)}</div>
         </div>
       </div>
     ` : ''}
@@ -349,7 +349,7 @@ function renderBookingConfirmation() {
     <div class="booking-confirmation">
       <div class="confirm-icon">${icon('check-circle', 48)}</div>
       <div class="section-title" style="text-align:center">Förfrågan skickad!</div>
-      <p style="font-size:14px;color:#b5b5aa;text-align:center;line-height:1.7;max-width:400px;margin:12px auto 28px">
+      <p style="font-size:16px;color:#b5b5aa;text-align:center;line-height:1.7;max-width:400px;margin:12px auto 28px">
         Tack, ${booking.name}! Vi har tagit emot din bokningsförfrågan och återkommer inom 24 timmar med bekräftelse.
       </p>
       <div class="booking-summary" style="max-width:400px;margin:0 auto 28px">

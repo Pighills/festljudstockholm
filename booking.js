@@ -3,15 +3,7 @@
 // ══════════════════════════════════════
 
 // ── BOKADE DATUM (byt ut mot API senare) ──
-const BOOKED_DATES = [
-  '2026-04-11','2026-04-12',
-  '2026-04-18','2026-04-19',
-  '2026-04-25','2026-04-26',
-  '2026-05-01','2026-05-02',
-  '2026-05-16','2026-05-17',
-  '2026-05-30',
-  '2026-06-06','2026-06-19','2026-06-20',
-];
+const BOOKED_DATES = [];
 
 // ── BOKNINGSSTATE ──
 let booking = {
@@ -144,18 +136,17 @@ function renderCalendar() {
     const dateStr = padDate(y, m, d);
     const booked = isBooked(dateStr);
     const past = isPast(dateStr);
-    const tooSoon = isTooSoon(dateStr);
     const selected = booking.date === dateStr;
-    const unavailable = booked || past || tooSoon;
+    const unavailable = booked || past;
 
     let cls = 'cal-cell day';
     if (selected) cls += ' selected';
     else if (booked) cls += ' booked';
-    else if (past || tooSoon) cls += ' past';
+    else if (past) cls += ' past';
     else cls += ' available';
 
     const onclick = unavailable ? '' : `onclick="booking.date='${dateStr}';renderBookingPage()"`;
-    const title = booked ? 'Bokat' : (past ? '' : tooSoon ? 'Minst 2 dagars framförhållning' : 'Ledigt — klicka för att välja');
+    const title = booked ? 'Bokat' : (past ? '' : 'Ledigt — klicka för att välja');
 
     cells += `<div class="${cls}" ${onclick} title="${title}"><span>${d}</span></div>`;
   }
@@ -191,7 +182,7 @@ function renderBookingStep2() {
     <div class="section-label">${icon('calendar', 14)} Steg 2</div>
     <div class="section-title">Välj datum</div>
     <div class="section-subtitle" style="margin-bottom:20px">
-      Se tillgänglighet och välj ditt datum. Minst 2 dagars framförhållning.
+      Se tillgänglighet och välj ditt datum.
     </div>
     ${renderCalendar()}
     ${booking.date ? `

@@ -114,9 +114,12 @@ const PACKAGES = [
 ];
 
 function toggleFlip(idx) {
-  if (flippedPackages.has(idx)) flippedPackages.delete(idx);
-  else flippedPackages.add(idx);
-  // Re-render without scroll
+  if (flippedPackages.has(idx)) {
+    flippedPackages.clear();
+  } else {
+    flippedPackages.clear();
+    flippedPackages.add(idx);
+  }
   const el = document.getElementById('content');
   if (currentView === 'hem') el.innerHTML = renderHomePage();
   else el.innerHTML = renderPackages() + renderHowItWorks() + renderFooter();
@@ -205,7 +208,9 @@ function renderHomePackages() {
       </div>
 
       <div style="margin-top:28px">
-        <div style="font-size:13px;font-weight:700;color:#f5f5f0;margin-bottom:12px">Tillägg</div>
+        <div style="font-size:13px;font-weight:700;color:#f5f5f0;margin-bottom:6px">Tillägg</div>
+        <div style="font-size:12px;color:#8a8a80;line-height:1.6;margin-bottom:14px">Alla paket kan kompletteras med tillägg efter behov. Har du övriga önskemål anger du det enkelt i samband med din <button onclick="setView('boka')" style="color:#c8a84e;font-weight:600;cursor:pointer;font-size:12px;font-family:inherit;text-decoration:underline">bokning</button>.</div>
+        <div style="font-size:11px;color:#8a8a80;margin-bottom:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">Exempel på tillägg</div>
         <div class="addons-row">
           ${ADDONS.map(a => `
             <div class="addon-info">
@@ -389,7 +394,7 @@ function renderFooter() {
 
 // ── PAGE RENDERERS ──
 function renderHomePage() {
-  return renderHero() + renderHomePackages() + renderHowItWorks() + renderEquipment() + renderFaq() + renderContact() + renderFooter();
+  return renderHero() + renderHomePackages() + renderHowItWorks() + renderContact() + renderFooter();
 }
 
 function renderPackagePage() {

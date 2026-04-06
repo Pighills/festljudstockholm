@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="base.css"/>
   <link rel="stylesheet" href="nav.css"/>
   <link rel="stylesheet" href="components.css"/>
+  <link rel="stylesheet" href="booking.css"/>
   <link rel="stylesheet" href="responsive.css"/>
 </head>
 <body>
@@ -27,12 +28,13 @@
       <div class="sidebar-divider"></div>
       <button class="nav-btn active"   data-view="hem"        onclick="setView('hem')">        <span class="n-icon"><i data-lucide="home"></i></span>       <span class="n-label">Hem</span></button>
       <button class="nav-btn inactive" data-view="paket"      onclick="setView('paket')">      <span class="n-icon"><i data-lucide="package"></i></span>    <span class="n-label">Paket</span></button>
+      <button class="nav-btn inactive" data-view="boka"       onclick="setView('boka')">       <span class="n-icon"><i data-lucide="calendar-check"></i></span><span class="n-label">Boka</span></button>
       <button class="nav-btn inactive" data-view="utrustning" onclick="setView('utrustning')"> <span class="n-icon"><i data-lucide="speaker"></i></span>    <span class="n-label">Utrustning</span></button>
       <button class="nav-btn inactive" data-view="faq"        onclick="setView('faq')">        <span class="n-icon"><i data-lucide="help-circle"></i></span><span class="n-label">FAQ</span></button>
       <button class="nav-btn inactive" data-view="kontakt"    onclick="setView('kontakt')">    <span class="n-icon"><i data-lucide="mail"></i></span>       <span class="n-label">Kontakt</span></button>
       <div class="sidebar-footer">
-        <button class="sidebar-cta" onclick="setView('kontakt')">
-          <i data-lucide="send" style="width:14px;height:14px"></i> Boka nu
+        <button class="sidebar-cta" onclick="setView('boka')">
+          <i data-lucide="calendar-check" style="width:14px;height:14px"></i> Boka nu
         </button>
       </div>
     </div>
@@ -41,7 +43,7 @@
     <div id="mobile-topbar">
       <button id="hamburger" onclick="toggleDrawer()"><i data-lucide="menu"></i></button>
       <span class="topbar-title">LJUD</span>
-      <button class="topbar-cta" onclick="setView('kontakt')"><i data-lucide="send"></i> Boka</button>
+      <button class="topbar-cta" onclick="setView('boka')"><i data-lucide="calendar-check"></i> Boka</button>
     </div>
 
     <!-- DRAWER OVERLAY -->
@@ -60,12 +62,13 @@
       <div class="sidebar-divider"></div>
       <button class="nav-btn active"   data-view="hem"        onclick="setView('hem')">        <span class="n-icon"><i data-lucide="home"></i></span>       <span class="n-label">Hem</span></button>
       <button class="nav-btn inactive" data-view="paket"      onclick="setView('paket')">      <span class="n-icon"><i data-lucide="package"></i></span>    <span class="n-label">Paket</span></button>
+      <button class="nav-btn inactive" data-view="boka"       onclick="setView('boka')">       <span class="n-icon"><i data-lucide="calendar-check"></i></span><span class="n-label">Boka</span></button>
       <button class="nav-btn inactive" data-view="utrustning" onclick="setView('utrustning')"> <span class="n-icon"><i data-lucide="speaker"></i></span>    <span class="n-label">Utrustning</span></button>
       <button class="nav-btn inactive" data-view="faq"        onclick="setView('faq')">        <span class="n-icon"><i data-lucide="help-circle"></i></span><span class="n-label">FAQ</span></button>
       <button class="nav-btn inactive" data-view="kontakt"    onclick="setView('kontakt')">    <span class="n-icon"><i data-lucide="mail"></i></span>       <span class="n-label">Kontakt</span></button>
       <div class="sidebar-footer">
-        <button class="sidebar-cta" onclick="setView('kontakt')">
-          <i data-lucide="send" style="width:14px;height:14px"></i> Boka nu
+        <button class="sidebar-cta" onclick="setView('boka')">
+          <i data-lucide="calendar-check" style="width:14px;height:14px"></i> Boka nu
         </button>
       </div>
     </div>
@@ -75,5 +78,6 @@
 
   </div>
   <script src="app.js"></script>
+  <script src="booking.js"></script>
 </body>
 </html>

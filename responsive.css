@@ -72,6 +72,22 @@
 
   /* Footer */
   .footer{padding:24px 0;}
+
+  /* Booking */
+  .booking-steps{gap:0;margin-bottom:28px;}
+  .step-name{display:none;}
+  .step-line{width:20px;margin:0 4px;}
+  .booking-packages{grid-template-columns:1fr;gap:10px;}
+  .booking-pkg{padding:14px 12px;}
+  .cal-container{padding:14px;}
+  .cal-cell{font-size:12px;border-radius:6px;}
+  .cal-nav{width:30px;height:30px;}
+  .cal-month{font-size:14px;}
+  .cal-legend{gap:12px;flex-wrap:wrap;}
+  .bfield-row{grid-template-columns:1fr;}
+  .booking-nav{flex-direction:column-reverse;gap:10px;}
+  .booking-nav .btn-gold,
+  .booking-nav .btn-outline{width:100%;justify-content:center;}
 }
 
 /* Mindre telefoner */

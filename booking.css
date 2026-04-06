@@ -1,0 +1,350 @@
+/* ══════════════════════════════════════
+   booking.css — Bokningsflöde
+   ══════════════════════════════════════ */
+
+/* ── Stegindikator ── */
+.booking-steps{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  margin-bottom:36px;
+  padding:0 10px;
+}
+.booking-step{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  cursor:default;
+}
+.booking-step.done{cursor:pointer;}
+.step-dot{
+  width:26px;height:26px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  font-weight:800;
+  transition:all .2s;
+}
+.booking-step.done .step-dot{
+  background:#c8a84e;
+  color:#0a0a0a;
+}
+.booking-step.active .step-dot{
+  background:rgba(200,168,78,0.15);
+  color:#c8a84e;
+  border:1.5px solid rgba(200,168,78,0.5);
+}
+.booking-step.upcoming .step-dot{
+  background:#1a1a1a;
+  color:#8a8a80;
+  border:1px solid #2a2a2a;
+}
+.step-name{
+  font-size:12px;
+  font-weight:600;
+}
+.booking-step.done .step-name{color:#c8a84e;}
+.booking-step.active .step-name{color:#f5f5f0;}
+.booking-step.upcoming .step-name{color:#8a8a80;}
+.step-line{
+  width:32px;
+  height:1px;
+  background:#2a2a2a;
+  margin:0 8px;
+}
+.step-line.done{background:#c8a84e;}
+
+/* ── Paketkort (bokningsvy) ── */
+.booking-packages{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:24px;
+}
+.booking-pkg{
+  background:#1a1a1a;
+  border:1px solid #2a2a2a;
+  border-radius:12px;
+  padding:16px 14px;
+  cursor:pointer;
+  transition:all .15s;
+}
+.booking-pkg:hover{border-color:rgba(200,168,78,0.25);}
+.booking-pkg.selected{
+  border-color:rgba(200,168,78,0.5);
+  background:rgba(200,168,78,0.06);
+}
+
+/* ── Navigation (bakåt/framåt) ── */
+.booking-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid #2a2a2a;
+}
+
+/* ── Kalender ── */
+.cal-container{
+  background:#1a1a1a;
+  border:1px solid #2a2a2a;
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:16px;
+}
+.cal-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:16px;
+}
+.cal-month{
+  font-size:16px;
+  font-weight:700;
+  color:#f5f5f0;
+}
+.cal-nav{
+  width:34px;height:34px;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#e8e4dc;
+  background:#141414;
+  border:1px solid #2a2a2a;
+  transition:all .15s;
+}
+.cal-nav:hover{border-color:rgba(200,168,78,0.3);color:#c8a84e;}
+.cal-nav.disabled{opacity:.3;pointer-events:none;}
+.cal-days-header{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:2px;
+  margin-bottom:4px;
+}
+.cal-day-name{
+  text-align:center;
+  font-size:10px;
+  font-weight:700;
+  color:#8a8a80;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  padding:6px 0;
+}
+.cal-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:2px;
+}
+.cal-cell{
+  aspect-ratio:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  transition:all .12s;
+}
+.cal-cell.empty{background:transparent;}
+.cal-cell.available{
+  color:#e8e4dc;
+  background:#141414;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.cal-cell.available:hover{
+  border-color:rgba(200,168,78,0.3);
+  color:#c8a84e;
+}
+.cal-cell.booked{
+  color:#52525b;
+  background:rgba(239,68,68,0.06);
+  border:1px solid rgba(239,68,68,0.12);
+  cursor:not-allowed;
+  position:relative;
+}
+.cal-cell.past{
+  color:#3a3a3a;
+  cursor:default;
+}
+.cal-cell.selected{
+  background:rgba(200,168,78,0.15);
+  color:#c8a84e;
+  border:1.5px solid rgba(200,168,78,0.5);
+  font-weight:800;
+}
+
+/* Kalender-legend */
+.cal-legend{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid #2a2a2a;
+}
+.cal-legend-item{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-size:11px;
+  color:#8a8a80;
+}
+.cal-dot{
+  width:8px;height:8px;
+  border-radius:50%;
+}
+.cal-dot.available{background:#e8e4dc;border:1px solid #2a2a2a;}
+.cal-dot.booked{background:rgba(239,68,68,0.3);border:1px solid rgba(239,68,68,0.3);}
+.cal-dot.selected{background:#c8a84e;}
+
+/* Valt datum */
+.booking-date-confirm{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:rgba(200,168,78,0.08);
+  border:1px solid rgba(200,168,78,0.22);
+  border-radius:10px;
+  padding:14px 16px;
+  color:#c8a84e;
+}
+
+/* ── Formulär ── */
+.booking-form{margin-bottom:8px;}
+.bfield{margin-bottom:14px;}
+.bfield-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.blabel{
+  display:block;
+  font-size:12px;
+  color:#8a8a80;
+  font-weight:600;
+  margin-bottom:6px;
+}
+.binput{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #2a2a2a;
+  background:#0a0a0a;
+  color:#f5f5f0;
+  font-size:14px;
+  font-family:inherit;
+  outline:none;
+  transition:border-color .15s;
+}
+.binput:focus{border-color:rgba(200,168,78,0.4);}
+.binput::placeholder{color:#52525b;}
+.btextarea{
+  min-height:80px;
+  resize:vertical;
+  line-height:1.5;
+}
+
+/* Tilläggs-checkboxar */
+.addon-checks{display:flex;flex-direction:column;gap:8px;}
+.bcheck{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#0a0a0a;
+  border:1px solid #2a2a2a;
+  border-radius:10px;
+  padding:12px 14px;
+  cursor:pointer;
+  transition:all .15s;
+}
+.bcheck:hover{border-color:rgba(200,168,78,0.2);}
+.bcheck.checked{
+  border-color:rgba(200,168,78,0.35);
+  background:rgba(200,168,78,0.05);
+}
+.bcheck-box{
+  width:20px;height:20px;
+  border-radius:6px;
+  border:1.5px solid #2a2a2a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  color:#c8a84e;
+  transition:all .12s;
+}
+.bcheck.checked .bcheck-box{
+  border-color:#c8a84e;
+  background:rgba(200,168,78,0.15);
+}
+.bcheck-name{
+  font-size:13px;
+  font-weight:600;
+  color:#f5f5f0;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.bcheck-name svg{width:14px;height:14px;color:#c8a84e;}
+.bcheck-price{font-size:11px;color:#8a8a80;margin-top:1px;}
+
+/* ── Sammanfattning ── */
+.booking-summary{
+  background:#1a1a1a;
+  border:1px solid #2a2a2a;
+  border-radius:14px;
+  padding:20px;
+}
+.bsum-section{padding:4px 0;}
+.bsum-label{
+  font-size:10px;
+  font-weight:700;
+  color:#8a8a80;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+.bsum-value{font-size:14px;font-weight:700;color:#f5f5f0;}
+.bsum-detail{font-size:12px;color:#b5b5aa;margin-top:2px;line-height:1.6;}
+.bsum-divider{height:1px;background:#2a2a2a;margin:10px 0;}
+.bsum-addon{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:12px;
+  color:#c8a84e;
+  font-weight:600;
+  margin-top:4px;
+}
+.bsum-addon svg{width:12px;height:12px;}
+
+/* Info-ruta */
+.booking-note{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  background:rgba(200,168,78,0.06);
+  border:1px solid rgba(200,168,78,0.18);
+  border-radius:10px;
+  padding:12px 14px;
+  margin-top:16px;
+  font-size:12px;
+  color:#b5b5aa;
+  line-height:1.6;
+}
+.booking-note svg{width:16px;height:16px;color:#c8a84e;flex-shrink:0;margin-top:1px;}
+
+/* ── Bekräftelse ── */
+.booking-confirmation{
+  text-align:center;
+  padding:20px 0;
+}
+.confirm-icon{
+  color:#c8a84e;
+  margin-bottom:16px;
+  display:flex;
+  justify-content:center;
+}
+.confirm-icon svg{width:48px;height:48px;}

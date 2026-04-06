@@ -142,8 +142,8 @@ function renderHero() {
       <h1 class="hero-title">Proffsljud till<br>din <span class="gold">fest</span></h1>
       <p class="hero-desc">Hyr kvalitetsljudutrustning för din fest, förening eller företagsevent. Enkelt, prisvärt och med personlig service.</p>
       <div class="hero-actions">
-        <button class="btn-gold" onclick="setView('paket')">${icon('volume-2')} Se paket & priser</button>
-        <button class="btn-outline" onclick="setView('kontakt')">${icon('message-circle')} Kontakta oss</button>
+        <button class="btn-gold" onclick="setView('boka')">${icon('calendar-check')} Boka nu</button>
+        <button class="btn-outline" onclick="setView('paket')">${icon('package')} Se paket & priser</button>
       </div>
 
     </div>
@@ -159,7 +159,7 @@ function renderPackages() {
       <div class="section-subtitle">Alla priser gäller per dygn exklusive moms. Deposition tillkommer och återbetalas efter avslutat event.</div>
 
       <div class="packages-grid">
-        ${PACKAGES.map(p => `
+        ${PACKAGES.map((p, idx) => `
           <div class="package-card${p.featured ? ' featured' : ''}">
             <div class="package-tag ${p.tagStyle}">${p.featured ? icon('star', 10) + ' ' : ''}${p.tag}</div>
             <div class="package-name">${p.name}</div>
@@ -169,8 +169,8 @@ function renderPackages() {
             <ul class="package-features">
               ${p.features.map(f => `<li>${icon('check', 14)} ${f}</li>`).join('')}
             </ul>
-            <button class="package-btn ${p.featured ? 'primary' : 'secondary'}" onclick="setView('kontakt')">
-              ${icon('send', 14)} Förfrågan
+            <button class="package-btn ${p.featured ? 'primary' : 'secondary'}" onclick="booking.packageIdx=${idx};booking.step=2;setView('boka')">
+              ${icon('calendar-check', 14)} Boka detta paket
             </button>
           </div>
         `).join('')}
@@ -336,6 +336,7 @@ function renderContent() {
     case 'paket':      el.innerHTML = renderPackagePage(); break;
     case 'utrustning': el.innerHTML = renderEquipmentPage(); break;
     case 'faq':        el.innerHTML = renderFaqPage(); break;
+    case 'boka':       renderBookingPage(); return;
     case 'kontakt':    el.innerHTML = renderContactPage(); break;
     default:           el.innerHTML = renderHomePage();
   }

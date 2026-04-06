@@ -5,8 +5,6 @@
 /* Gemensamma sektionsstilar */
 .section{
   padding:80px 0;
-  opacity:0;
-  animation:fadeIn .5s ease forwards;
 }
 .section-label{
   display:inline-flex;
@@ -61,7 +59,6 @@
   letter-spacing:1px;
   text-transform:uppercase;
   margin-bottom:28px;
-  animation:fadeIn .4s ease .1s both;
 }
 .hero-badge .dot{
   width:6px;height:6px;
@@ -76,7 +73,6 @@
   letter-spacing:-1px;
   line-height:1.1;
   margin-bottom:16px;
-  animation:fadeIn .4s ease .2s both;
 }
 .hero-title .gold{color:#c8a84e;}
 .hero-desc{
@@ -85,14 +81,12 @@
   line-height:1.7;
   max-width:480px;
   margin-bottom:32px;
-  animation:fadeIn .4s ease .3s both;
 }
 .hero-actions{
   display:flex;
   gap:12px;
   flex-wrap:wrap;
   justify-content:center;
-  animation:fadeIn .4s ease .4s both;
 }
 
 /* Knappar */
@@ -224,17 +218,20 @@
 .package-btn.secondary:hover{border-color:rgba(200,168,78,0.3);color:#c8a84e;}
 .package-btn svg{width:14px;height:14px;}
 
+/* Flip card */
+.flip-card{
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  min-height:200px;
+}
+.flip-card.flipped{
+  background:rgba(200,168,78,0.04);
+  border-color:rgba(200,168,78,0.25);
+}
+
 /* Tillägg */
 .addons-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;}
-.addon-card{
-  background:#141414;
-  border:1px solid #2a2a2a;
-  border-radius:10px;
-  padding:14px;
-  text-align:center;
-  transition:border-color .15s;
-}
-.addon-card:hover{border-color:rgba(200,168,78,0.22);}
 .addon-icon{
   width:36px;height:36px;
   border-radius:8px;
@@ -243,11 +240,28 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:0 auto 8px;
+  flex-shrink:0;
 }
 .addon-icon svg{width:16px;height:16px;color:#c8a84e;}
 .addon-name{font-size:12px;font-weight:700;color:#f5f5f0;margin-bottom:2px;}
 .addon-price{font-size:11px;color:#c8a84e;font-weight:600;}
+.addon-info{
+  background:#141414;
+  border:1px solid #2a2a2a;
+  border-radius:10px;
+  padding:14px;
+}
+.addon-info-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+.addon-desc{
+  font-size:11px;
+  color:#8a8a80;
+  line-height:1.5;
+}
 
 /* ── Steg (Så funkar det) ── */
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;}

@@ -111,7 +111,9 @@ function renderBookingStep1() {
       `).join('')}
     </div>
     <div class="booking-nav">
-      <div></div>
+      <button class="btn-outline" onclick="resetBooking();setView(previousView)">
+        ${icon('arrow-left', 16)} Tillbaka
+      </button>
       <button class="btn-gold" ${booking.packageIdx === null ? 'disabled style="opacity:.4;pointer-events:none"' : ''} onclick="booking.step=2;renderBookingPage()">
         Välj datum ${icon('arrow-right', 16)}
       </button>

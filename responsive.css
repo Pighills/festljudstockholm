@@ -37,11 +37,7 @@
   .package-features li{font-size:12px;}
 
   /* Tillägg */
-  .addons-row{grid-template-columns:repeat(3,1fr);gap:8px;}
-  .addon-card{padding:12px 8px;}
-  .addon-icon{width:32px;height:32px;margin-bottom:6px;}
-  .addon-name{font-size:11px;}
-  .addon-price{font-size:10px;}
+  .addons-row{grid-template-columns:1fr;gap:8px;}
 
   /* Steg */
   .steps-grid{grid-template-columns:1fr;gap:10px;}
@@ -96,8 +92,4 @@
   .hero-title{font-size:24px;}
   .hero-desc{font-size:12px;}
   .package-card{padding:16px 14px;}
-  .addons-row{grid-template-columns:1fr 1fr 1fr;gap:6px;}
-  .addon-card{padding:10px 6px;}
-  .addon-name{font-size:10px;}
-  .addon-price{font-size:9px;}
 }

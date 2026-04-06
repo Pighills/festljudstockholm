@@ -1,8 +1,11 @@
 // ── STATE ──
 let currentView = 'hem';
+let previousView = 'hem';
+let flippedPackages = new Set();
 
 // ── NAVIGATION ──
 function setView(view) {
+  previousView = currentView;
   currentView = view;
   renderContent();
   updateNav();
@@ -53,6 +56,7 @@ const PACKAGES = [
     tagStyle: 'neutral',
     desc: 'Perfekt för mindre tillställningar och tal.',
     price: '900–1 200',
+    suited: 'Tal, mingel och bakgrundsmusik. Passar medelstora lokaler med upp till 80 personer — t.ex. kalas, konferenser eller vernissage.',
     features: [
       '2x Alto TS415 (15", 2000W)',
       'Högtalarstativ',
@@ -67,6 +71,7 @@ const PACKAGES = [
     tagStyle: 'gold',
     desc: 'Mellanstort paket med rejäl bas — för fester med sting.',
     price: '1 800–2 500',
+    suited: 'Det mest bokade paketet. Födelsedagar, studentfester och mindre bröllopsfester. Subwoofern ger dansgolvet den bas som behövs.',
     features: [
       'Allt i Topp-paket',
       '1x Subwoofer (15", 1500W)',
@@ -81,6 +86,7 @@ const PACKAGES = [
     tagStyle: 'gold',
     desc: 'Komplett PA-system för stora fester och event.',
     price: '3 000–4 000',
+    suited: 'Stora bröllop, företagsfester och event. Full rigg med dubbla subwoofers som fyller hela lokalen med kraftfullt, tydligt ljud.',
     features: [
       '2x Alto TS415 toppar',
       '2x Subwoofers',
@@ -96,6 +102,7 @@ const PACKAGES = [
     tagStyle: 'gold',
     desc: 'Full rigg med danbandspinnar — skapt för dansband och föreningsliv.',
     price: '3 500–5 000',
+    suited: 'Skräddarsytt för dansband och föreningar. Danbandspinnar ger den klassiska uppställningen som banden förväntar sig. Perfekt i bygdegård och folkpark.',
     features: [
       'Allt i Festpaket L',
       'Danbandspinnar (topp på sub)',
@@ -106,10 +113,20 @@ const PACKAGES = [
   },
 ];
 
+function toggleFlip(idx) {
+  if (flippedPackages.has(idx)) flippedPackages.delete(idx);
+  else flippedPackages.add(idx);
+  // Re-render without scroll
+  const el = document.getElementById('content');
+  if (currentView === 'hem') el.innerHTML = renderHomePage();
+  else el.innerHTML = renderPackages() + renderHowItWorks() + renderFooter();
+  if (window.lucide) lucide.createIcons();
+}
+
 const ADDONS = [
-  { name: 'Leverans', price: '300–800 kr', icon: 'truck' },
-  { name: 'Tekniker', price: '400–600 kr/h', icon: 'wrench' },
-  { name: 'Extra dag', price: '50% av pris', icon: 'calendar-plus' },
+  { name: 'Leverans & hämtning', price: '300–800 kr', icon: 'truck', desc: 'Vi kör ut och hämtar utrustningen. Pris beroende på avstånd.' },
+  { name: 'Tekniker på plats', price: '400–600 kr/h', icon: 'wrench', desc: 'Vi hjälper till med uppsättning, ljudcheck och support under eventet.' },
+  { name: 'Extra dag', price: '50% av pris', icon: 'calendar-plus', desc: 'Behöver du utrustningen en extra dag? Halva dygnspriset tillkommer.' },
 ];
 
 const STEPS = [
@@ -150,7 +167,65 @@ function renderHero() {
   `;
 }
 
-// ── RENDER: PACKAGES ──
+// ── RENDER: HOME PACKAGES (flip cards) ──
+function renderHomePackages() {
+  return `
+    <div class="section" id="paket-section">
+      <div class="section-label">${icon('package', 14)} Våra paket</div>
+      <div class="section-title">Hitta rätt ljud för ditt event</div>
+      <div class="section-subtitle">Tryck på ett paket för att se vad det passar till.</div>
+
+      <div class="packages-grid">
+        ${PACKAGES.map((p, idx) => {
+          const flipped = flippedPackages.has(idx);
+          return `
+          <div class="package-card flip-card${p.featured ? ' featured' : ''}${flipped ? ' flipped' : ''}" onclick="toggleFlip(${idx})">
+            ${!flipped ? `
+              <div class="package-tag ${p.tagStyle}">${p.featured ? icon('star', 10) + ' ' : ''}${p.tag}</div>
+              <div class="package-name">${p.name}</div>
+              <div class="package-desc">${p.desc}</div>
+              <div style="display:flex;align-items:baseline;gap:6px;margin-top:auto;padding-top:12px">
+                <span class="package-price" style="font-size:18px">${p.price} kr</span>
+                <span class="package-price-note" style="margin-bottom:0">/ dygn</span>
+              </div>
+              <div style="font-size:11px;color:#8a8a80;margin-top:10px;display:flex;align-items:center;gap:4px">${icon('rotate-cw', 12)} Tryck för mer info</div>
+            ` : `
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px">
+                <div class="package-tag ${p.tagStyle}" style="margin-bottom:0">${p.name}</div>
+              </div>
+              <div style="font-size:12px;font-weight:700;color:#f5f5f0;margin-bottom:6px">Passar till</div>
+              <div style="font-size:12px;color:#b5b5aa;line-height:1.7;margin-bottom:14px">${p.suited}</div>
+              <button class="package-btn primary" onclick="event.stopPropagation();booking.packageIdx=${idx};booking.step=2;setView('boka')">
+                ${icon('calendar-check', 14)} Boka detta paket
+              </button>
+              <div style="font-size:11px;color:#8a8a80;margin-top:8px;display:flex;align-items:center;gap:4px;justify-content:center">${icon('rotate-cw', 12)} Tryck för att vända tillbaka</div>
+            `}
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div style="margin-top:28px">
+        <div style="font-size:13px;font-weight:700;color:#f5f5f0;margin-bottom:12px">Tillägg</div>
+        <div class="addons-row">
+          ${ADDONS.map(a => `
+            <div class="addon-info">
+              <div class="addon-info-header">
+                <div class="addon-icon">${icon(a.icon, 16)}</div>
+                <div>
+                  <div class="addon-name">${a.name}</div>
+                  <div class="addon-price">${a.price}</div>
+                </div>
+              </div>
+              <div class="addon-desc">${a.desc}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── RENDER: PAKET PAGE (full details) ──
 function renderPackages() {
   return `
     <div class="section" id="paket-section">
@@ -180,10 +255,15 @@ function renderPackages() {
         <div style="font-size:13px;font-weight:700;color:#f5f5f0;margin-bottom:12px">Tillägg</div>
         <div class="addons-row">
           ${ADDONS.map(a => `
-            <div class="addon-card">
-              <div class="addon-icon">${icon(a.icon, 16)}</div>
-              <div class="addon-name">${a.name}</div>
-              <div class="addon-price">${a.price}</div>
+            <div class="addon-info">
+              <div class="addon-info-header">
+                <div class="addon-icon">${icon(a.icon, 16)}</div>
+                <div>
+                  <div class="addon-name">${a.name}</div>
+                  <div class="addon-price">${a.price}</div>
+                </div>
+              </div>
+              <div class="addon-desc">${a.desc}</div>
             </div>
           `).join('')}
         </div>
@@ -309,7 +389,7 @@ function renderFooter() {
 
 // ── PAGE RENDERERS ──
 function renderHomePage() {
-  return renderHero() + renderPackages() + renderHowItWorks() + renderEquipment() + renderFaq() + renderContact() + renderFooter();
+  return renderHero() + renderHomePackages() + renderHowItWorks() + renderEquipment() + renderFaq() + renderContact() + renderFooter();
 }
 
 function renderPackagePage() {
